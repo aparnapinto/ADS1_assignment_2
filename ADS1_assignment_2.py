@@ -82,10 +82,11 @@ def line_graph_1():
         plt.plot(coal_transpose.index, coal_transpose[lab1[i]], label=lab1[i])
     plt.xlabel("Year", fontsize=12)
     plt.ylabel("Electricity production(in %)", fontsize=12)
-    plt.title("Electricity Production from Coal Sources (% of total)",fontsize=15)
+    plt.title("Electricity Production from Coal Sources (% of total)",
+              pad=60, fontsize=15)
     plt.xticks()
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.25),
-               fancybox=True, shadow=True, ncol=5)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.25),
+               fancybox=True, shadow=True, ncol=4)
 
     plt.savefig("electricity_production.png", bbox_inches="tight")
     plt.show()
@@ -105,10 +106,11 @@ def line_graph_2():
                  power_transpose[lab2[i]], label=lab2[i])
     plt.xlabel("Year", fontsize=12)
     plt.ylabel("Electric power consumption(kWh)", fontsize=12)
-    plt.title("Electric Power Consumption (kWh per capita)", fontsize=15)
+    plt.title("Electric Power Consumption (kWh per capita)",
+              pad=60, fontsize=15)
     plt.xticks()
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1),
-               fancybox=True, shadow=True, ncol=5)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.25),
+               fancybox=True, shadow=True, ncol=4)
     plt.savefig("power_consumption.png", bbox_inches="tight")
     plt.show()
 
