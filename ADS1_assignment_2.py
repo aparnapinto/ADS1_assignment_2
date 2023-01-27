@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Dec 11 04:20:14 2022
-
-@author: ap22aby
-"""
-
+# Importing modules
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -19,7 +13,9 @@ def read(file):
 
 
 def bar_graph_1():
-    """This function is for plotting the bar graph"""
+    """
+    This function is for plotting the bar graph of population total.
+    """
 
     plt.figure()
     ax = plt.subplot(1, 1, 1)
@@ -44,7 +40,10 @@ def bar_graph_1():
 
 
 def bar_graph_2():
-    """This function is for plotting the bar graph"""
+    """
+    This function is for plotting the bar graph of CO2 emissions from solid 
+    fuel consumption(kt)
+    """
 
     plt.figure()
     ax = plt.subplot(1, 1, 1)
@@ -70,7 +69,10 @@ def bar_graph_2():
 
 
 def line_graph_1():
-    """This function is for plotting a line graph using iteration"""
+    """
+    This function is for plotting a line graph of Electricity production
+    from coal sources(%) of total using iteration.
+    """
 
     coal, coal_transpose = read(
         "Electricity_production_from_coal_sources(% of total).csv")
@@ -93,7 +95,10 @@ def line_graph_1():
 
 
 def line_graph_2():
-    """This function is for plotting a line graph using iteration"""
+    """
+    This function is for plotting a line graph of Electric power 
+    consumption(kWh per capita) using iteration
+    """
 
     power, power_transpose = read(
         "Electric_power_consumption(kWh per capita).csv")
@@ -115,6 +120,21 @@ def line_graph_2():
     plt.show()
 
 
+def CO2_data_mean():
+    """
+    This function is used to calculate the mean of CO2 emissions from solid 
+    fuel consumption(kt) of the selected countries.
+    """
+
+    df1, df2 = read("CO2_emissions_from_solid_fuel_consumption_(kt).csv")
+    df = df1.set_index("Country Name")
+    transpose = df.transpose()
+    cleaned_data = transpose.fillna(0)
+    mean = cleaned_data[["Australia", "Belgium", "Canada", "Germany", "Israel",
+                         "Japan", "Mexico"]].mean()
+    return mean
+
+
 # Reading the csv file to get a return of dataframes
 pop, pop_transpose = read("Population_total.csv")
 co2, co2_transpose = read("CO2_emissions_from_solid_fuel_consumption_(kt).csv")
@@ -127,3 +147,7 @@ bar_graph_1()
 bar_graph_2()
 line_graph_1()
 line_graph_2()
+
+# Function to return the mean of CO2 emissions
+mean = CO2_data_mean()
+mean = mean.to_csv("mean_of_CO2.csv")
